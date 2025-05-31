@@ -57,9 +57,9 @@ public class SearchAlgorithms {
         else high = pos - 1;
 
         iterations++;
-        if (iterations > maxIterations) break; // 超过最大次数，防止卡死
+        if (iterations > maxIterations) break; 
         }
-    // 如果没找到，最后用二分查找兜底
+    
         return binarySearch(a, x);
     }   
   
