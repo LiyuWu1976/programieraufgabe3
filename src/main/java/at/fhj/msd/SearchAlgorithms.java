@@ -20,15 +20,21 @@ public class SearchAlgorithms {
     /**
      * Binary search: divide-and-conquer in sorted array.
      */
-    public static int binarySearch(int[] a, int x) {
-        int low = 0, high = a.length - 1;
+        public static int binarySearch(int[] a, int x) {
+    int low = 0;
+    int high = a.length - 1;
 
-        while (low <= high) {
-            int mid = (low + high) >>> 1; // safe midpoint
-            if (a[mid] == x) return mid;
-            else if (a[mid] < x) low = mid + 1;
-            else high = mid - 1;
+    while (low <= high) {
+        int mid = (low + high) >>> 1; // calculate mid safely
+
+        if (a[mid] == x) {
+            return mid; // exact match
+        } else if (a[mid] < x) {
+            low = mid + 1; // search in right half
+        } else {
+            high = mid - 1; // search in left half
         }
+    }
 
         return -1;
     }
