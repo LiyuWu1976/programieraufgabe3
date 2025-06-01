@@ -9,7 +9,7 @@ import java.util.Random;
 public class Main {
 
     static final int[] SIZES = {100, 1000, 10000, 100000};
-    static final int[] TIMES = {100, 1000, 5000, 10000};
+    static final int[] TIMES = {100, 1000, 10000, 100000};
     static final Random rand = new Random();
     
 
@@ -73,5 +73,4 @@ public class Main {
         }
         return arr;
     }
-
 }
