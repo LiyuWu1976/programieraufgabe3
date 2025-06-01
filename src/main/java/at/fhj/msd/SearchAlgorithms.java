@@ -37,46 +37,25 @@ public class SearchAlgorithms {
      * Diese Methode sucht das Element x im sortierten Array a mithilfe der Interpolationssuche.
      */
     public static int interpolationSearch(int[] a, int x) {
-        // Initialisierung, low und high geben den aktuellen Suchbereich an.
         int low = 0, high = a.length - 1; 
 
-        /**maxIterations ist die maximale Anzahl von Wiederholungen, um endlose Schleifen zu vermeiden.
-         Sie basiert auf der Logarithmusfunktion log₂(n) + ein Sicherheitsaufschlag.)
-        */
         int maxIterations = 32 + (int)(Math.log(a.length + 1) / Math.log(2)); 
 
-        /** Sonderfälle behandeln
-         * Falls das Array leer ist oder das gesuchte Element direkt am Anfang oder Ende liegt → sofort zurückgeben.
-        */
         if (a.length == 0) return -1;
         if (a[low] == x) return low;
         if (a[high] == x) return high;
 
-
         int iterations = 0;
 
-        /**Hauptschleife: Interpolationssuche
-         * Schleife läuft nur, wenn sich x im aktuellen Bereich befindet: a[low] bis a[high].
-        */
         while (low <= high && x >= a[low] && x <= a[high]) {
             if (a[low] == a[high]) break; // prevent division by zero
-
-        /**Interpolationsformel
-         * Berechnet die geschätzte Position pos von x basierend auf linearer Skalierung.
-         * long verhindert Überlauf.
-        */
+        
         long num = (long)(x - a[low]) * (high - low);
         long den = a[high] - a[low];
         int pos = low + (int)(num / den);
-
-        /**Grenzwerte prüfen
-         * Falls pos außerhalb des gültigen Bereichs liegt → abbrechen.
-        */
+        
         if (pos < low || pos > high) break;
 
-        /**Vergleiche
-        * Klassisches Vorgehen wie bei der binären Suche: Bereich nach dem Vergleich eingrenzen.
-        */
         if (a[pos] == x) return pos;
         else if (a[pos] < x) low = pos + 1;
         else high = pos - 1;
@@ -86,8 +65,6 @@ public class SearchAlgorithms {
         if (iterations > maxIterations) break; 
         }
 
-        /**Wenn die Interpolationssuche fehlschlägt, wird eine klassische binäre Suche durchgeführt.
-        Das erhöht die Robustheit der Methode.*/
         return binarySearch(a, x);
     }   
 
