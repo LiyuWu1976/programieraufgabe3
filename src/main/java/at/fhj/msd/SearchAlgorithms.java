@@ -9,11 +9,14 @@ public class SearchAlgorithms {
      * Linear search: scans from left to right.
      */
     public static int linearSearch(int[] a, int x) {
-    for (int i = 0; i < a.length; i++) {
-        if (a[i] == x) {
-            return i; // match found
-        }
+   int index = 0;
+   for (int value : a) {
+    if (value == x) {
+        return index; // match found
     }
+    index++;
+}
+
     return -1; // not found
 }
 
