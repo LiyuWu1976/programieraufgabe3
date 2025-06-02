@@ -44,6 +44,7 @@ public class Main {
         System.out.println("Benchmark finished. Results saved in benchmark.csv");
     }
 
+    @FunctionalInterface
     interface SearchFunction {
         int search(int[] arr, int target);
     }
