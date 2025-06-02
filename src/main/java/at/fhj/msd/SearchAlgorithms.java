@@ -61,9 +61,10 @@ public class SearchAlgorithms {
         while (low <= high && x >= a[low] && x <= a[high]) {
             if (a[low] == a[high]) break; // prevent division by zero
         
-        long num = (long)(x - a[low]) * (high - low);
-        long den = a[high] - a[low];
-        int pos = low + (int)(num / den);
+       long den = a[high] - a[low];
+       long num = (long)(x - a[low]) * (high - low);
+       int pos = low + (int)(num / den);
+
         
         if (pos < low || pos > high) break;
 
