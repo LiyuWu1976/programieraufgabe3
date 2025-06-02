@@ -27,9 +27,11 @@ public class Main {
 
             // generate random targets in the same range as array values
             int[] targets = new int[TIMES[i]];
-            for (int j = 0; j < TIMES[i]; j++) {
-                targets[j] = rand.nextInt(SIZES[i]) + 1;
-            }
+            int j = 0;
+             while (j < TIMES[i]) {
+              targets[j++] = rand.nextInt(SIZES[i]) + 1;
+}
+
             
 
             testMethod("LinearSearch", randomArray, targets, csv, SearchAlgorithms::linearSearch);
