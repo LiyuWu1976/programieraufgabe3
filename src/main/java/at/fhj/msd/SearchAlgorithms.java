@@ -72,7 +72,7 @@ public class SearchAlgorithms {
         else if (a[pos] < x) low = pos + 1;
         else high = pos - 1;
 
-        //Schutz gegen endlose Schleifen oder ineffiziente Suche bei schlecht verteilten Daten.
+        //Protection against infinite loops or inefficient search in poorly distributed data.
         iterations++;
         if (iterations > maxIterations) break; 
         }
@@ -94,9 +94,9 @@ public class SearchAlgorithms {
         if (n <= 0) return -1;
 
         if (a[from] < a[to]) {
-            // Interpolationsmethode zur Schätzung von t
+            // Interpolation method for estimating t.
             int t = from + (int)Math.floor((to - from) * (double)(x - a[from]) / (a[to] - a[from]));
-            // Grenzschutz
+            // limit safeguard
             if (t < from) t = from;
             if (t > to) t = to;
 
@@ -105,13 +105,13 @@ public class SearchAlgorithms {
             if (step < 1) step = 1;
 
             if (x < a[t]) {
-                // Nach links springen
+                // Jump to the left.
                 while (t > from && x < a[t]) t -= step;
                 int left = Math.max(from, t);
                 int right = Math.min(to, t + step - 1);
                 return qbsHelper(a, x, left, right);
             } else {
-                // Nach rechts springen
+                // Jump to the right.
                 while (t < to && x > a[t]) t += step;
                 int left = Math.max(from, t - step + 1);
                 int right = Math.min(to, t);
