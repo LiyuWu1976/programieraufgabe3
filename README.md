@@ -3,6 +3,8 @@
 
 ## 👤 Author
 **Maryam Taeid**  
+**Liyu WU**
+**Helma Arjmand**
 
 
 ---
@@ -13,8 +15,9 @@ This file contains the implementation of two fundamental search algorithms in Ja
 
 - `linearSearch(int[] a, int x)`
 - `binarySearch(int[] a, int x)`
+- `interpolationSearch(int[] a, int x)`
+- `uadraticBinarySearch(int[] a, int x)`
 
-Both methods follow the exact specifications provided in the assignment.
 
 ---
 
@@ -29,6 +32,19 @@ Both methods follow the exact specifications provided in the assignment.
 - Requires a **sorted array**.
 - Uses divide-and-conquer to reduce search time.
 - Returns the index of `x` or `-1` if not found.
+
+### 3. `interpolationSearch(int[] a, int x)`
+- Works best on **sorted, uniformly distributed** arrays.
+- Estimates the position using interpolation formula.
+- Falls back to `binarySearch` if too many iterations.
+- Can be faster than binary search on well-distributed data.
+
+### 4. `quadraticBinarySearch(int[] a, int x)`
+- Requires a **sorted** array.
+- Divides the range into √n-sized blocks instead of halves.
+- Starts from an estimated position and searches recursively in quarters.
+- Mixes interpolation and binary-like search for special cases.
+
 
 ---
 
